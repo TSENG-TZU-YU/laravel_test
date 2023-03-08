@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Post;
 
 
 class TasksController extends Controller
@@ -15,19 +15,18 @@ class TasksController extends Controller
 
 //    }
 
-public function index($id)
+public function index()
 {
     # 建立模板變數 title
-    $binding['title'] = 'ProductController@index';
-    $binding['a'] = 'aaaaaaaaaaaa';
-    $bind['b'] = 'bbbbbbbbbbbbbbbbbba';
-    
-    
+    $binding['title'] = 'ProductController@index';    
+    $datas = Post::get();
+
     # 回傳 html, 使用 resources\views\product\list.blade.php 模板
     # 第二個參數將要使用的變數給模板($binding)
-    return view('product.list', $binding,$bind );
+    return view('product.list',compact('datas') );
     // ['name' => 'Samantha']
 }
+
 public function create()
 {
     $binding['title'] = 'GET -> ProductController@create';

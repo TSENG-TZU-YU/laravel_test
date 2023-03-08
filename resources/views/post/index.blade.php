@@ -21,10 +21,18 @@
     <p><input type="submit" name="Reset" value="Reset">
  </div>
  <div>
- @foreach ($datas as $key => $data)
+        @foreach ($datas as $key => $data)
             <a href="/post/{{ $data->id }}">{{ $data->title }}</a> <br />
             作者：{{ $data->name }} <br />
             內容：{{ $data->content }} <br />
+            時間:{{$data->created_at}} <br />
+        @endforeach
+
+        @foreach ($datas as $data)
+            <a href="/post/{{ $data->id }}">{{ $datas[0]->title }}</a> <br />
+            作者：{{ $data->name }} <br />
+            內容：{{ $data->content }} <br />
+            時間:{{$data->created_at}} <br />
         @endforeach
  </div>
 
